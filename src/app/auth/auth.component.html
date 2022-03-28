@@ -1,0 +1,125 @@
+<div class="auth-container">
+
+  <mat-card class="auth mat-elevation-z8"
+            [ngClass]="{'login': isLogin, 'register': !isLogin}"
+            fxLayout="column">
+
+    <mat-card-title>
+      {{ isLogin ? 'Sign in' : 'Sign up' }}
+    </mat-card-title>
+
+    <mat-card-content fxLayout="column"
+                      fxLayoutAlign="space-between"
+                      fxLayoutGap="10px"
+                      [formGroup]="authForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput
+               formControlName="email"
+               type="email"
+               placeholder="Email">
+        <mat-error *ngIf="email.invalid">
+          {{ getValidatorErrorMessage(email) }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput
+               formControlName="password"
+               type="password"
+               placeholder="Password"
+               [type]="isHiddenPassword ? 'password' : 'text'">
+        <button mat-icon-button
+                matSuffix (click)="isHiddenPassword = !isHiddenPassword">
+          <mat-icon>
+            {{ isHiddenPassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">
+          {{ getValidatorErrorMessage(password) }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!isLogin"
+                      appearance="outline">
+        <mat-label>Repeat password</mat-label>
+        <input matInput
+               formControlName="repeatPassword"
+               type="password"
+               placeholder="Repeat password"
+               [type]="isHiddenRepeatPassword ? 'password' : 'text'">
+        <button mat-icon-button
+                matSuffix (click)="isHiddenRepeatPassword = !isHiddenRepeatPassword">
+          <mat-icon>
+            {{ isHiddenRepeatPassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+        <mat-error *ngIf="repeatPassword.invalid">
+          {{ getValidatorErrorMessage(
+          repeatPassword,
+          password.value !== repeatPassword.value) }}
+        </mat-error>
+      </mat-form-field>
+
+      <button *ngIf="isLogin"
+              mat-button
+              color="primary"
+              class="auth-buttons">
+        Forgot password?
+      </button>
+
+      <button mat-raised-button
+              color="primary"
+              class="auth-buttons"
+              [disabled]="disableSaveButton">
+        {{ isLogin ? 'Sign in' : 'Sign up' }}
+      </button>
+
+      <div>
+        <hr class="hr-text" data-content="OR">
+      </div>
+
+      <button mat-raised-button
+              color="warn"
+              class="auth-buttons">
+        Continue with Google
+      </button>
+
+      <div *ngIf="isLogin"
+           fxLayout="row"
+           fxLayoutAlign="center center"
+           fxLayoutGap="10px">
+
+        <div>New to this?</div>
+
+        <button mat-button
+                color="primary"
+                routerLink="/auth/register">
+          Join now
+        </button>
+
+      </div>
+
+      <div *ngIf="!isLogin"
+           fxLayout="row"
+           fxLayoutAlign="center center"
+           fxLayoutGap="10px">
+
+        <div>Already have account?</div>
+
+        <button mat-button
+                color="primary"
+                routerLink="/auth/login">
+          Sign in
+        </button>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+

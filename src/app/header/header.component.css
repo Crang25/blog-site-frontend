@@ -1,0 +1,10 @@
+.site-title {
+  cursor: pointer;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+}
+
+/*# sourceMappingURL=header.component.css.map */

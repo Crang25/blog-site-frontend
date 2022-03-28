@@ -1,0 +1,33 @@
+.user-profile-container {
+  padding: 15px;
+}
+.user-profile-container .user-info-container mat-card.side-info {
+  background-color: #cdd4ff;
+}
+.user-profile-container .user-info-container mat-card.side-info .user-profile-image-container img {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+.user-profile-container mat-card.total-info {
+  padding: 20px 30px;
+}
+.user-profile-container mat-card.total-info .column-item {
+  width: 100%;
+  font-size: 16px;
+}
+.user-profile-container mat-card.total-info .column-item .item-title {
+  font-weight: 600;
+}
+.user-profile-container mat-card.total-info .column-item .item-value {
+  color: #969ba4;
+  font-weight: 100;
+  word-break: break-all;
+}
+.user-profile-container mat-card.total-info .custom-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e3dede;
+}
+
+/*# sourceMappingURL=user-profile.component.css.map */

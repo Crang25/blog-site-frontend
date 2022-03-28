@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+
+    <div class="item-container">
+      <p class="site-title"
+         routerLink="/">Blog site</p>
+    </div>
+
+    <div class="item-container"
+         fxLayoutAlign="space-between">
+
+<!--      TODO: replace to *ngIf="isLoggedIn" -->
+      <button *ngIf="!isLoggedIn"
+              mat-icon-button
+              routerLink="/user-profile/45">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <button *ngIf="!isLoggedIn"
+              mat-icon-button
+              routerLink="/auth/register">
+        <mat-icon>login</mat-icon>
+      </button>
+
+      <button *ngIf="isLoggedIn"
+              mat-icon-button>
+        <mat-icon>logout</mat-icon>
+      </button>
+
+    </div>
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
